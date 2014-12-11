@@ -58,6 +58,7 @@ int main(int argc, char *argv[]) {
 		printf("Press <RETURN> to Reset LEDs \n");
 		getchar();
 	}
+	canvas->Clear();
 	delete canvas;
 	return 0;
 	
