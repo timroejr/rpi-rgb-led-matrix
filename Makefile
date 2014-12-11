@@ -23,6 +23,9 @@ minimal-example : minimal-example.o $(RGB_LIBRARY)
 text-example : text-example.o $(RGB_LIBRARY)
 	$(CXX) $(CXXFLAGS) text-example.o -o $@ $(LDFLAGS)
 
+unitcircle : unitcircle.o $(RGB_LIBRARY)
+	$(CXX) $(CXXFLAGS) unitcirlce.o -o $@ $(LDFLAGS)
+
 %.o : %.cc
 	$(CXX) -I$(RGB_INCDIR) $(CXXFLAGS) -c -o $@ $<
 
