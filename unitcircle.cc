@@ -7,7 +7,6 @@
 // --Code Starts Below this Line--
 
 #include <stdio.h>
-
 #include "led-matrix.h"
 
 #include <unistd.h>
@@ -42,7 +41,7 @@ static void DrawCenterLine(Canvas *canvas) {
 	int width = canvas->width();
 	int height = canvas->height();
 	for (int x = 0; x < width; x++) {
-		canvas()->SetPixel(x, height/2, 0, 255, 0, 0);
+		canvas()->SetPixel(x, height/2, 0, 255, 0);
 	}
 	for (int y = 0; y < height; y++) {
 		canvas()->SetPixel(width/2, y, 0, 255, 0);
