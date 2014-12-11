@@ -35,7 +35,7 @@ static void DrawOnCanvas(Canvas *canvas) {
   }
 }
 
-static void DrawCenterLine(Canvas *led) {
+/* static void DrawCenterLine(Canvas *led) {
 	int width = led->width();
 	int height = led->height();
 	for (int x = 0; x < width; x++) {
@@ -45,7 +45,7 @@ static void DrawCenterLine(Canvas *led) {
 		led()->SetPixel(width/2, y, 0, 255, 0);
 	}
 	
-}
+} */
 
 int main(int argc, char *argv[]) {
   /*
@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
   Canvas *canvas = new RGBMatrix(&io, rows, chain);
 
   DrawOnCanvas(canvas);
-  DrawCenterLine(canvas); // Using the canvas.
+ // DrawCenterLine(canvas); // Using the canvas.
 
   // Animation finished. Shut down the RGB matrix.
   canvas->Clear();
