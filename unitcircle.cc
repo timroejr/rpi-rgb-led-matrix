@@ -20,7 +20,7 @@ static void DrawOnCanvas(Canvas *canvas) {
 	int center_x = canvas->width()/2;
 	int center_y = canvas->height()/2;
 	float radius_max = canvas->width()/2;
-	float angle/step = 1.0/360;
+	float angle_step = 1.0/360;
 	for (float a = 0, r = 0; r < radius_max; a += angle_step, r += angle_step) {
 		float dot_x = cos(a*2*M_PI) * r;
 		float dot_y = sin(a*2*M_PI) * r;
