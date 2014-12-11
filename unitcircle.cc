@@ -31,8 +31,8 @@ static void DrawOnCanvas(Canvas *canvas) {
 }
 
 static void DrawCenterLine(Canvas *canvas) {
-	int width = canvas()->width();
-	int height = canvas()->height();
+	int width = canvas->width();
+	int height = canvas>height();
 	for (int x = 0; x < width; x++) {
 		canvas()->SetPixel(x, height/2, 0, 255, 0, 0);
 	}
