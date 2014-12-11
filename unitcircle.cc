@@ -13,8 +13,7 @@
 #include <math.h>
 
 using rgb_matrix::GPIO;
-using rgb_matrix::RGBMat
-	rix;
+using rgb_matrix::RGBMatrix;
 using rgb_matrix::Canvas;
 
 static void DrawOnCanvas(Canvas *canvas) {
