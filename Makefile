@@ -1,5 +1,5 @@
 CXXFLAGS=-Wall -O3 -g
-BINARIES=led-matrix minimal-example text-example
+BINARIES=led-matrix minimal-example text-example unitcircle
 
 # Where our library resides. It is split between includes and the binary
 # library in lib
