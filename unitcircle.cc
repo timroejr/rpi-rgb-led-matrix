@@ -8,6 +8,11 @@
 
 #include <stdio.h>
 
+#include "led-matrix.h"
+
+#include <unistd.h>
+#include <math.h>
+
 using rgb_matrix::GPIO;
 using rgb_matrix::RGBMat
 	rix;
