@@ -27,9 +27,10 @@ static void DrawOnCanvas(Canvas *canvas) {
 		canvas->SetPixel(Center_x + dox_x, center_y + dot_y, 255, 0, 0);
 		usleep(1*1000); //slow down process
 	}
+	
 }
 
-static void DrawCenterLine(Canvas *centerLines) {
+static void DrawCenterLine(Canvas *canvas) {
 	const int width = canvas()->width();
 	const int height = canvas()->height();
 	for (int x = 0; x < width; x++) {
@@ -38,6 +39,7 @@ static void DrawCenterLine(Canvas *centerLines) {
 	for (int y = 0; y < height; y++) {
 		canvas()->SetPixel(width/2, y, 0, 255, 0);
 	}
+	
 }
 
 int main(int argc, char *argv[]) {
@@ -50,11 +52,13 @@ int main(int argc, char *argv[]) {
 	Canvas *canvas = new RGBMatrix(&io, rows, chain);
 	
 	DrawOnCanvas(canvas);
-	DrawCenterLines(centerLines);
+	DrawCenterLines(canvas);
 	
 	if (as_daemon) {
 		printf("Press <RETURN> to Reset LEDs \n");
 		getchar();
 	}
+	delete canvas;
+	return 0;
 	
 }
