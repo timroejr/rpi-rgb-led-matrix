@@ -16,39 +16,14 @@ using rgb_matrix::GPIO;
 using rgb_matrix::RGBMatrix;
 using rgb_matrix::Canvas;
 
-class UnitCircle : public ThreadedCanvasManipulator {
-public:
-	UnitCircle(Canvas *matrix) : ThreadedCanvasManipulator(matrix) {}
-	void Run() {
-		int center_x = matrix->width() / 2;
-		int center_y = matrix->height() / 2;
-		float radius_max = matrix->width() / 2;
-		float angle_step = 1.0 / 360;
-		for (float a = 0, r = 0; r < radius_max; a += angle_step, r += angle_step) {
-			float dot_x = cos(a * 2 * M_PI) * r;
-			float dot_y = sin(a * 2 * M_PI) * r;
-			matrix->SetPixel(center_x + dot_x, center_y + dot_y, 255, 0, 0);
-			usleep(1 * 1000);  // wait a little to slow down things.
-		}
-		int width = matrix->width();
-		int height = matrix->height();
-		for (int x = 0; x < width; x++) {
-			canvas()->SetPixel(x, height/2, 0, 255, 0);
-		}
-		for (int y = 0; y < height; y++) {
-			canvas()->SetPixel(width/2, y, 0, 255, 0);
-		}
-	}	
-}
 
-
-//static void DrawOnCanvas(Canvas *canvas) {
+static void DrawOnCanvas(Canvas *canvas) {
   /*
    * Let's create a simple animation. We use the canvas to draw
    * pixels. We wait between each step to have a slower animation.
    */
   //canvas->Fill(0, 0, 255);
-/* 
+
   int center_x = canvas->width() / 2;
   int center_y = canvas->height() / 2;
   float radius_max = canvas->width() / 2;
@@ -59,8 +34,16 @@ public:
     canvas->SetPixel(center_x + dot_x, center_y + dot_y,
                      255, 0, 0);
     usleep(1 * 1000);  // wait a little to slow down things.
+	int width = led->width();
+	int height = led->height();
+	for (int x = 0; x < width; x++) {
+		canvas()->SetPixel(x, height/2, 0, 255, 0);
+	}
+	for (int y = 0; y < height; y++) {
+		canvas()->SetPixel(width/2, y, 0, 255, 0);
+	}
   }
-} */
+}
 
 /* static void DrawCenterLine(Canvas *led) {
 	int width = led->width();
@@ -88,9 +71,8 @@ int main(int argc, char *argv[]) {
   int rows = 32;   // A 32x32 display. Use 16 when this is a 16x32 display.
   int chain = 1;   // Number of boards chained together.
   Canvas *canvas = new RGBMatrix(&io, rows, chain);
-  ThreadedCanvasManipulator *img_gen = NULL;
-  img_gen = new UnitCircle(canvas)
 
+  DrawOnCanvas(canvas);
 
   
   // Animation finished. Shut down the RGB matrix.
@@ -100,8 +82,8 @@ int main(int argc, char *argv[]) {
 	printf("Press <RETURN> to Reset LEDs\n");
 	getchar();
   }
-  canvas->Clear();
-  delete canvas;
+  led->Clear();
+  delete led;
   return 0;
 
 }
